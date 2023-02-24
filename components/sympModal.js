@@ -1,13 +1,106 @@
 
 
 import React from 'react';
-import ActualRadio from './RadioButton';
+import RadioButton from './RadioButton';
 import { useState } from "react";
 import { View, Text, Pressable,Image,StyleSheet ,Modal, ScrollView,TextInput,Button} from 'react-native';
 
 
 export default function SympModal(props){
     const [modalVisible, setModalVisible] = useState(false);
+    const [option, setOption] = useState(null);
+    const [optionFlow, setOptionFlow] = useState(null);
+    const [optionMood, setOptionMood] = useState(null);
+    const [optionPain, setOptionPain] = useState(null);
+    const [optionDischarge, setOptionDischarge] = useState(null);
+    const [optionSex, setOptionSex] = useState(null);
+    const [optionOther, setOptionOther] = useState(null);
+  
+  
+
+
+  const flowData = [
+    { value: 'Light' },
+    { value: 'Medium' },
+    { value: 'Heavy' },
+  ];
+
+  const moodData = [
+    { value: 'Calm' },
+    { value: 'Happy' },
+    { value: 'Sad' },
+    { value: 'Angry' },
+    { value: 'Excited' },
+    { value: 'Mood Swings' },
+    { value: 'Anxious' },
+    { value: 'Indifferent' },
+    { value: 'Irrtiable' },
+  ];
+
+
+  const dischargeData = [
+    { value: 'None' },
+    { value: 'Sticky' },
+    { value: 'Eggwhite' },
+    { value: 'Atypical' },
+    
+  ];
+
+  const sexData = [
+    { value: 'None' },
+    { value: 'Protected' },
+    { value: 'Unprotected' },
+    { value: 'High sex drive' },
+    { value: 'Low sex drive' },
+    { value: 'Withdrawl' },
+    { value: 'Masturbation' },
+    { value: 'Painful' },
+    
+  ];
+
+  const painData = [
+    { value: 'None' },
+    { value: 'Period Cramps' },
+    { value: 'Ovulation' },
+    { value: 'Breast Tenderness' },
+    { value: 'Headache' },
+    { value: 'Migraine' },
+    { value: 'Joint' },
+    { value: 'Back' },
+    
+  ];
+
+  const otherData = [
+    { value: 'Acne' },
+  
+  ];
+
+    const saveHandler = () => {
+      setModalVisible(!modalVisible)
+
+      console.log(optionFlow)
+      setOptionFlow('')
+
+
+      console.log(optionMood)
+      setOptionMood('')
+
+      console.log(optionPain)
+      setOptionPain('')
+
+
+      console.log(optionDischarge)
+      setOptionDischarge('')
+
+      console.log(optionSex)
+      setOptionSex('')
+
+      console.log(optionOther)
+      setOptionOther('')
+
+    
+    };
+
     return(
 <View>
  <Modal
@@ -29,19 +122,39 @@ export default function SympModal(props){
      <Text style={styles.modalText}>{props.date}</Text>
      
      <ScrollView >
-     <ActualRadio/>
 
-     <Pressable
-       style={[styles.buttonSave]}
-       onPress={() => setModalVisible(!modalVisible)}>
-       <Text style={styles.textStyle}>Save</Text>
-     </Pressable>
+    
+
+     <Text> Flow </Text>
+ <RadioButton data={flowData} onSelect={(value) => setOptionFlow(value) }/>
+
+
+ <Text> Mood </Text>
+ <RadioButton  data={moodData} onSelect={(value) => setOptionMood(value)}/>
+
+ <Text>  Discharge </Text>
+ <RadioButton data={dischargeData} onSelect={(value) => setOptionDischarge(value)}/>
+
+ <Text> Sex </Text>
+ <RadioButton data={sexData} onSelect={(value) => setOptionSex(value)}/>
+
+<Text> Pain </Text>
+<RadioButton data={painData} onSelect={(value) => setOptionPain(value)}/>
+
+ <Text> Other </Text>
+ <RadioButton data={otherData} onSelect={(value) => setOptionOther(value)}/>
+     
 
      <TextInput 
        style={{height:45}}
        placeholder="Anything else?"
        />
 
+<Pressable
+       style={[styles.button,styles.buttonClose]}
+       onPress={() => saveHandler()}>
+       <Text style={styles.textStyle}>Save</Text>
+     </Pressable>
  
         </ScrollView>
 
