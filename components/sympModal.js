@@ -15,6 +15,7 @@ export default function SympModal(props){
     const [optionDischarge, setOptionDischarge] = useState(null);
     const [optionSex, setOptionSex] = useState(null);
     const [optionOther, setOptionOther] = useState(null);
+    const [text, setText] = useState('');
   
   
 
@@ -78,6 +79,8 @@ export default function SympModal(props){
     const saveHandler = () => {
       setModalVisible(!modalVisible)
 
+      console.log(props.date)
+
       console.log(optionFlow)
       setOptionFlow('')
 
@@ -97,6 +100,10 @@ export default function SympModal(props){
 
       console.log(optionOther)
       setOptionOther('')
+
+      console.log(text)
+
+      
 
     
     };
@@ -148,6 +155,8 @@ export default function SympModal(props){
      <TextInput 
        style={{height:45}}
        placeholder="Anything else?"
+       onChangeText={newText => setText(newText)}
+       defaultValue={text}
        />
 
 <Pressable
