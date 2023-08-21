@@ -15,12 +15,15 @@ export default function SympModal(props){
     const [optionDischarge, setOptionDischarge] = useState(null);
     const [optionSex, setOptionSex] = useState(null);
     const [optionOther, setOptionOther] = useState(null);
+    const [optionSleep, setOptionSleep] = useState(null);
+    const [optionMedication, setOptionMedication] = useState(null);
     const [text, setText] = useState('');
   
   
 
 
   const flowData = [
+    { value: 'None' },
     { value: 'Light' },
     { value: 'Medium' },
     { value: 'Heavy' },
@@ -71,6 +74,30 @@ export default function SympModal(props){
     
   ];
 
+  const sleepData = [
+    { value: 'None' },
+    { value: 'A lot' },
+    { value: 'Little' },
+
+  ];
+
+  const medicationData = [
+    { value: 'None' },
+    { value: 'Yes' },
+  ];
+
+  // const exerciseData = [
+  //   { value: 'None' },
+  //   { value: 'Period Cramps' },
+  //   { value: 'Ovulation' },
+  //   { value: 'Breast Tenderness' },
+  //   { value: 'Headache' },
+  //   { value: 'Migraine' },
+  //   { value: 'Joint' },
+  //   { value: 'Back' },
+    
+  // ];
+
   const otherData = [
     { value: 'Acne' },
   
@@ -97,6 +124,12 @@ export default function SympModal(props){
 
       console.log(optionSex)
       setOptionSex('')
+
+      console.log(optionSleep)
+      setOptionSleep('')
+
+      console.log(optionMedication)
+      setOptionMedication('')
 
       console.log(optionOther)
       setOptionOther('')
@@ -148,6 +181,12 @@ export default function SympModal(props){
 <Text> Pain </Text>
 <RadioButton data={painData} onSelect={(value) => setOptionPain(value)}/>
 
+<Text> Sleep </Text>
+<RadioButton data={sleepData} onSelect={(value) => setOptionSleep(value)}/>
+
+<Text> Medication </Text>
+<RadioButton data={medicationData} onSelect={(value) => setOptionMedication(value)}/>
+
  <Text> Other </Text>
  <RadioButton data={otherData} onSelect={(value) => setOptionOther(value)}/>
      
@@ -174,7 +213,7 @@ export default function SympModal(props){
 </Modal>
 <Button
     title="Log"
-    color="#f194ff"
+    color="#F1E9CF"
     onPress={() => setModalVisible(true)}
     />
 </View>
@@ -184,7 +223,6 @@ export default function SympModal(props){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
     },

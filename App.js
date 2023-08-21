@@ -30,12 +30,12 @@ function HomeScreen( {navigation}) {
 
       return (
         <View style={styles.container}>
-
-
-          <Text>{currentDate}</Text>
+          <View style={styles.containerInner}>
+          <Text style={styles.beigeColor} >{currentDate}</Text>
+          <Text style={styles.beigeColor} >Hey user, do have something to share today?</Text>
           <SympModal date={currentDate}/>
           <StatusBar style="auto" />
-
+          </View>
         </View>
 
   );
@@ -44,7 +44,7 @@ function HomeScreen( {navigation}) {
 
 function InsightsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#11332E' }}>
       <Text>Insights!</Text>
     </View>
   );
@@ -52,7 +52,7 @@ function InsightsScreen() {
 
 function CalendarScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#11332E' }}>
       <Calendar/>
     </View>
   );
@@ -62,7 +62,7 @@ function CalendarScreen() {
 
 function SettingsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' ,backgroundColor: '#11332E'}}>
       <Text>Settings!</Text>
     </View>
   );
@@ -77,8 +77,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Navigator
+     screenOptions={{
+      headerShown:false,
+      tabBarStyle: { backgroundColor:"black"},
+      tabBarInactiveTintColor:"#F1E9CF",
+    }} >
+      <Tab.Screen name="Home" component={HomeScreen}/>
       <Tab.Screen name="Insights" component={InsightsScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
@@ -91,9 +96,27 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  containerInner:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    height:"75%",
+    width:"90%",
+    borderWidth: 1,
+    borderColor:"#F1E9CF",
+    backgroundColor: '#11332E',
+  },
+
+  beigeColor: {
+    color:"#F1E9CF"
+  },
+  NavCon:{
+    color: 'black',
   },
   centeredView: {
     flex: 1,
